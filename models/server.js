@@ -1,11 +1,7 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 import { dbConnection } from "../db/config.db.js";
 import { routerFilter } from "../routes/filter.routes.js";
 import { routerHorario } from "../routes/horario.routes.js";
@@ -52,10 +48,6 @@ class Server {
 	}
 
 	start() {
-		this.app.get("*", (req, res) => {
-			res.sendFile(__dirname + "/public/index.html");
-		});
-
 		this.app.listen(this.port, () => {
 			console.log("Servidor corriendo en puerto", this.port);
 		});

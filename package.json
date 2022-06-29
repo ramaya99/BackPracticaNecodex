@@ -5,6 +5,7 @@
 	"description": "Ejercicio de practica - Catalogo de practicantes",
 	"main": "index.js",
 	"scripts": {
+		"dev": "node app",
 		"start": "node app",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
