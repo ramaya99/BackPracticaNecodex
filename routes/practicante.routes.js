@@ -27,6 +27,10 @@ routerPracticante.post(
 		check("correo", "El correo es obligatorio").not().isEmpty(),
 		check("correo", "Correo no valido").isEmail(),
 		check("correo").custom(existeCorreo),
+		check("nacimiento", "La fecha de nacimiento es obligatoria")
+			.not()
+			.isEmpty(),
+		check("nacimiento", "La fecha no es valida").isDate(),
 		check("telefono", "El telefono debe de ser un numero").isNumeric(),
 		check("telefono").custom(existeTelefono),
 		check("clabe").custom(existeCLABE),
@@ -52,14 +56,14 @@ routerPracticante.put(
 	updatePracticante
 );
 
-// routerPracticante.put(
-// 	"/:id",
-// 	[
-// 		check("id", "El id proporcionado no es un id valido").isMongoId(),
-// 		check("id").custom(existePracticante),
-// 		validaciones,
-// 	],
-// 	statusPracticante
-// );
+routerPracticante.put(
+	"/:id",
+	[
+		check("id", "El id proporcionado no es un id valido").isMongoId(),
+		check("id").custom(existePracticante),
+		validaciones,
+	],
+	updatePracticante
+);
 
 export { routerPracticante };

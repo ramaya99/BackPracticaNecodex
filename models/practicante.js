@@ -20,6 +20,10 @@ const PracticanteSchema = Schema({
 		required: [true, "El correo es obligatorio"],
 		unique: true,
 	},
+	nacimiento: {
+		type: Date,
+		required: [true, "La fecha de nacimiento es obligatoria"]
+	},
 	telefono: {
 		type: Number,
 		unique: true,

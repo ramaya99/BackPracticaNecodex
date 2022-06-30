@@ -13,4 +13,4 @@ const HorarioSchema = Schema({
 	},
 });
 
-export default model("Horario", HorarioSchema);
+export default model("Horarios", HorarioSchema);

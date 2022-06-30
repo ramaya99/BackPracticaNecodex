@@ -7,7 +7,6 @@ import {
 } from "../controllers/horario.controller.js";
 import { existeHorario } from "../helpers/validaciones-bd.js";
 import { validaciones } from "../middlewares/validaciones.js";
-// import { validaciones } from "../middlewares/validaciones.js";
 
 const routerHorario = Router();
 

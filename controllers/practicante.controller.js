@@ -14,30 +14,19 @@ const practicantesPost = async (req, res) => {
 };
 
 const getPracticantes = async (req, res = response) => {
-	// const { limit = 5, desde = 0 } = req.query;
-	const condition = { status: true };
-
+	const { limit = 5, skip = 0 } = req.query;
 	const [total, practicantes] = await Promise.all([
-		Practicante.countDocuments(condition),
-		Practicante.find(condition),
-		// .skip(Number(desde)).limit(Number(limit)),
+		Practicante.countDocuments(),
+		Practicante.find()
+			.skip(Number(skip))
+			.limit(Number(limit))
+			.populate("horario", ["entrada", "salida"]),
 	]);
-
 	res.json({
 		total,
 		practicantes,
 	});
 };
-
-// const statusPracticante = async (req, res = response) => {
-// 	const { id } = req.params;
-// 	const { status } = req.body;
-
-// 	const practicante = await Practicante.findByIdAndUpdate(id, status, {
-// 		new: true,
-// 	});
-// 	res.json(practicante);
-// };
 
 const updatePracticante = async (req, res = response) => {
 	const { id } = req.params;
@@ -52,9 +41,4 @@ const updatePracticante = async (req, res = response) => {
 	});
 };
 
-export {
-	practicantesPost,
-	getPracticantes,
-	// statusPracticante,
-	updatePracticante,
-};
+export { practicantesPost, getPracticantes, updatePracticante };

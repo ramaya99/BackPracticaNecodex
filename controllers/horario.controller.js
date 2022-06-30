@@ -2,13 +2,9 @@ import { response } from "express";
 import Horario from "../models/horario.js";
 
 const getHorarios = async (req, res = response) => {
-	// const { limit = 5, desde = 0 } = req.query;
-	const condition = { status: true };
-
 	const [total, horarios] = await Promise.all([
 		Horario.countDocuments(),
 		Horario.find(),
-		// .skip(Number(desde)).limit(Number(limit)),
 	]);
 
 	res.json({
